@@ -32,9 +32,22 @@ func fibonacci() func() int {
 	}
 }
 
+// shorter version with shift [a,b] in [b,a+b]
+// starts from 1,1
+func fibonacciShort() func() int {
+	fibo := 0
+	prev := 1
+	return func() int {
+		fibo, prev = prev, fibo+prev
+		return fibo
+	}
+}
+
 func main() {
-	f := fibonacci()
+	// f := fibonacci()
+	fs := fibonacciShort()
 	for i := 0; i < 13; i++ {
-		fmt.Println(f())
+		// fmt.Println(f())
+		fmt.Println(fs())
 	}
 }
