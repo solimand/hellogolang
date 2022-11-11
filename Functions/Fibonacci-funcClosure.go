@@ -14,13 +14,15 @@ func fibonacci() func() int {
 		if (fibo == 0) && (prev == 0) && !startseq {
 			fibo = 1
 			return 0
-		} else if (fibo == 1) && (prev == 0) && !startseq {
-			startseq = true
-			return fibo
-		} else if (fibo == 1) && (prev == 0) && startseq {
-			res := prev + fibo
-			prev = 1
-			return res
+		} else if (fibo == 1) && (prev == 0) {
+			if !startseq {
+				startseq = true
+				return fibo
+			} else {
+				res := prev + fibo
+				prev = 1
+				return res
+			}
 		} else {
 			res := prev + fibo
 			prev = fibo
