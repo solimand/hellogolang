@@ -44,10 +44,18 @@ func fibonacciShort() func() int {
 }
 
 func main() {
-	// f := fibonacci()
+	f := fibonacci()
 	fs := fibonacciShort()
-	for i := 0; i < 13; i++ {
+	fmt.Println("Enter the end of this shame (int): ")
+	var limit int
+	fmt.Scanln(&limit)
+	fmt.Printf("You entered: %d\nFibonacci short form exec returns:\n", limit)
+	for i := 0; i < limit; i++ {
 		// fmt.Println(f())
 		fmt.Println(fs())
+	}
+	fmt.Println("Fibonacci Long form exec returns:")
+	for i := 0; i < limit; i++ {
+		fmt.Println(f())
 	}
 }
