@@ -1,6 +1,8 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 // fibonacci (sum o prev 2 numbers, starting from 0 1) is a function that returns
 // a function that returns an int.
@@ -46,9 +48,14 @@ func fibonacciShort() func() int {
 func main() {
 	f := fibonacci()
 	fs := fibonacciShort()
-	fmt.Println("Enter the end of this shame (int): ")
+	fmt.Println("Enter the end of this shame (positive int): ")
 	var limit int
-	fmt.Scanln(&limit)
+	success, err := fmt.Scanln(&limit)
+	for success != 1 {
+		fmt.Println("Wrong digit! ERR " + err.Error() + ". Enter a positive int, please: ")
+		success, _ = fmt.Scanln(&limit)
+	}
+
 	fmt.Printf("You entered: %d\nFibonacci short form exec returns:\n", limit)
 	for i := 0; i < limit; i++ {
 		// fmt.Println(f())

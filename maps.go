@@ -3,8 +3,6 @@ package main
 import (
 	"fmt"
 	"strings"
-
-	"golang.org/x/tour/wc"
 )
 
 // This function returns a map of the words in the string s and the number of occurrences of the words in the string
@@ -27,6 +25,6 @@ func WordCount(s string) map[string]int {
 	return result
 }
 
-func main() {
-	wc.Test(WordCount)
-}
+// func main() {
+// 	wc.Test(WordCount)
+// }
