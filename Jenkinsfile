@@ -1,6 +1,9 @@
 /* Requires the Docker Pipeline plugin */
 pipeline {
-    agent { docker { image 'golang:1.19.1-alpine' } }
+    //agent { docker { image 'golang:1.19.1-alpine' } }
+    agent any
+    /*ISSUE https://issues.jenkins.io/browse/JENKINS-60473
+        no container lnx under windows */
     stages {
         stage('build') {
             when {
@@ -9,7 +12,8 @@ pipeline {
                 }
             }
             steps {
-                sh 'go version'
+                powershell 'go version'
+                //sh 'go version'
             }
         }
     }
