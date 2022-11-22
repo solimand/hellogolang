@@ -14,6 +14,9 @@ pipeline {
             steps {
                 powershell 'go version'
                 //sh 'go version'
+                script{ /*build the Docker image*/
+                    docker.build("myfibo", "Functions/")
+                }                
             }
         }
     }
